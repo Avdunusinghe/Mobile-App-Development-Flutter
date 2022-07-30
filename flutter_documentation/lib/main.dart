@@ -1,22 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_documentation/answer/answer.dart';
+import 'package:flutter_documentation/question.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  //const MyApp({Key? key}) : super(key: key);
 
-  void answerQuestion() {
-    print("test");
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+  void _answerQuestion(context) {
+    setState(() {
+       questionIndex = questionIndex + 1;
+       print(questionIndex);
+    });
+   
   }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'What is your favorite color?',
-      'What is your favorite animal?'
+      {
+        'questionText':'What is your favorite color?',
+        'answers':['Black', 'Red', 'Green', 'White'],
+      },
+      {
+        'questionText':'What is your favorite Animal?',
+        'answers':['Rabbit', 'Snake', 'Elephant', 'Lion'],
+      },
+      {
+        'questionText':'What is your favorite Insturctor?',
+        'answers':['Max', 'Max', 'Max', 'Max'],
+      },
     ];
     String? tittle = 'My First App';
     String bodyText = "The Question !";
@@ -28,9 +52,11 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             Text(bodyText),
-            RaisedButton(child: Text('Answer 1'), onPressed: answerQuestion),
-            RaisedButton(child: Text('Answer 2'), onPressed: null),
-            RaisedButton(child: Text('Answer 3'), onPressed: null),
+           
+           
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
           ],
         ),
       ),
