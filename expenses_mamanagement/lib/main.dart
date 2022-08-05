@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/widgets/new_transaction.dart';
 import 'package:flutter_complete_guide/widgets/transaction_list.dart';
 
 void main() => runApp(MyApp());
@@ -38,34 +39,7 @@ class MyHomePage extends StatelessWidget {
                 elevation: 5,
               ),
             ),
-            Card(
-              elevation: 5,
-              child: Container(
-                padding: EdgeInsets.all(10),
-                child: Column(children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Title'),
-                    controller: titleController,
-                    /*  onChanged: (value) {
-                      titleInput = value;
-                    }, */
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Amount'),
-                    controller: amountController,
-                    /*  onChanged: (value) => amountInput = value, */
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      print(titleController.text);
-                      print(amountController.text);
-                    },
-                    child: Text('Add Transaction'),
-                    textColor: Colors.purple,
-                  ),
-                ]),
-              ),
-            ),
+            NewTransaction(),
             TransactionList()
           ],
         ));
